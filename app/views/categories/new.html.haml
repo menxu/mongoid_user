@@ -1,0 +1,30 @@
+.page-model-form
+  = form_for @category do |f|
+    .field.need
+      %label title
+      =f.text_field :title
+
+    .field
+      %label desc
+      =f.text_field :desc
+      
+    .feild
+      %label img
+      =f.file_field :img
+
+    .field.books
+      .book
+        - book = @category.books.build
+
+        = f.fields_for :books, book do |book_form|
+          %label name
+          =book_form.text_field :name
+
+          %label desc
+          =book_form.text_field :desc
+
+    .field
+      =f.submit
+
+
+

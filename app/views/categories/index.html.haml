@@ -1,0 +1,26 @@
+= "category"
+= link_to 'new', new_category_path
+
+%ul
+  - @categories.each do |category|
+    %li
+      .category
+        %label
+          %span= 'title'
+          %span.title= category.title
+
+        %label
+          %span= 'desc'
+          %span.desc= category.desc
+
+        %label
+          %span= 'img'
+          - if !category.img.blank?
+            = image_tag category.img
+
+        %label.books
+          - category.books.each do |book|
+            %label.book
+              %span= 'book'
+              %span.name= book.name
+              %span.desc= book.desc
